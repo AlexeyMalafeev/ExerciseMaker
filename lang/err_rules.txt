@@ -1,0 +1,397 @@
+# comma splits error variants
+# comma at the end means the word can be removed
+a -> an, the, 
+absence -> absense, absance
+acceptable -> acceptible
+accidentally -> accidentaly
+accommodate -> accomodate, acommodate
+accommodation -> acommodation, accomodation, acomodation
+achieve -> acheive
+acknowledge -> acknowlege, aknowledge
+acquaintance -> acquaintence, aquaintance
+acquire -> aquire
+acquit -> aquit
+across -> accross
+address -> adress
+adultery -> adultary
+advice -> advices
+advisable -> adviseable, advizable
+affect -> effect
+aggression -> agression, aggresion
+alcohol -> alchohol
+allege -> alege, allage
+allegiance -> allegaince, allegience, alegiance
+almost -> allmost
+although -> despite
+am -> is, are,
+amateur -> amatuer, amature
+amend -> ammend
+among -> amung
+an -> a, the,
+annually -> anually, annualy
+another -> other, others
+any -> some
+anybody -> nobody
+anymore -> no more
+anyone -> no one
+anything -> nothing
+anywhere -> nowhere
+apparent -> apparant, aparent
+are -> is, 
+aren't -> isn't
+argument -> arguement
+at -> in, on
+atheist -> athiest
+athlete -> athelete
+average -> avrage, averege
+awful -> awfull, aweful
+balance -> ballance, balence
+basically -> basicly
+be -> 
+beautiful -> beautifull, beutiful, beatiful
+because -> becouse
+becoming -> becomeing
+been -> being, 
+before -> befor
+beginning -> beggining, begining 
+believe -> beleive
+benefit -> benifit
+breathe -> breath, brethe
+burglar -> burgler
+business -> bisness, bussiness, buisness, buziness, bizness
+calendar -> calender
+camouflage -> camoflage, camoflague
+can -> can to
+career -> carrer
+careful -> carefull
+category -> catagory
+caught -> cauhgt, caugt
+ceiling -> cieling
+cemetery -> cemetary, cematery
+certain -> certin
+changeable -> changable
+chief -> cheif
+citizen -> citezen
+colleague -> collaegue, collegue
+collectible -> collectable
+column -> colum
+comfortable -> confortable
+coming -> comming
+committed -> commited, comitted
+competition -> compitition
+concede -> conceed
+congratulate -> congradulate
+conscientious -> consciencious
+conscious -> concious, consious
+consensus -> concensus
+controversy -> contraversy
+convenience -> conveniance
+coolly -> cooly
+criticize -> critecize, critisize
+dead -> died
+deceive -> decieve
+decide -> dicide
+definite -> definate, definit
+definitely -> definitly,  definately, defiantly
+deposit -> deposite
+describe -> discribe
+desirable -> desireable
+desperate -> desparate
+despite -> although
+develop -> develope
+died -> dead
+difference -> diffrence
+dilemma -> dilema
+disappear -> disapear, dissapear
+disappoint -> dissapoint, dissappoint, disapoint
+disappointed -> dissapointed, dissappointed, disapointed
+disastrous -> disasterous
+discipline -> disipline
+discuss -> discuss about
+discussed -> discussed about
+discusses -> discusses about
+discussing -> discussing about
+do -> does
+doable -> dooable
+does -> do
+doesn't -> don't
+don't -> doesn't
+drunkenness -> drunkeness
+during -> durring
+easily -> easely
+effect -> efect, effekt
+eight -> eigth
+either -> ether
+embarrass -> embarass
+embarrassed -> embarassed
+environment -> enviroment
+equipment -> equiptment
+equipped -> equiped
+exaggerate -> exagerate
+exceed -> excede
+excellent -> exellent, excelent
+except -> exsept
+exercise -> exercize, exersize
+exhausted -> exausted
+exhilarate -> exilerate
+existence -> existance
+expect -> exspect
+experience -> experiance
+experiment -> experament
+explanation -> explaination
+extreme -> extreem
+familiar -> familier
+fascinating -> facinating, fasinating
+finally -> finaly
+for -> to
+foreign -> foriegn
+forty -> fourty
+forward -> foreward
+friend -> freind
+fulfil -> fullfil
+fundamental -> fundemental
+generally -> generaly, genrally
+government -> goverment
+grammar -> grammer
+grateful -> gratefull, greatful
+guarantee -> garantee, garentee, garanty
+guidance -> guidence
+hair -> hairs
+happiness -> happyness
+harass -> harrass
+harassed -> harrassed
+harassing -> harrassing
+harassment -> harrassment
+has -> have
+have -> has
+height -> heighth, heigth, hight
+her -> she
+heroes -> heros
+hers -> her
+herself -> her
+hierarchy -> heirarchy
+him -> he
+himself -> him
+hygiene -> hygene, hygine, higeine, hygeine
+hypocrite -> hipocrit
+identity -> idenity
+ignorance -> ignorence
+imaginary -> imaginery
+imitate -> immitate
+imitation -> immitation
+immediately -> imediately, immideately, immedeately
+in -> at, on
+incidentally -> incidently
+independence -> independance
+independent -> independant
+indispensable -> indispensible
+inoculate -> innoculate
+intelligence -> inteligence, intelligance
+interested -> interesting
+interesting -> intresting
+interruption -> interuption
+irrelevant -> irrelevent
+irritable -> irritible
+is -> are, 
+island -> iland
+isn't -> aren't
+it's -> its
+its -> it's
+jewelry -> jewelery
+knowledge -> knowledges
+knowledge -> knowlege
+laboratory -> labratory
+learn -> teach
+leisure -> liesure
+length -> lenght
+lesson -> leson
+liaison -> liason
+library -> libary
+license -> lisence
+lightning -> lightening
+loneliness -> lonelyness
+lose -> loose
+losing -> loosing, loseing
+lying -> lieing
+maintenance -> maintenence, maintnance
+many -> much
+marriage -> marrige
+mathematics -> mathmatics
+medicine -> medcine
+mention -> mention about
+mentioned -> mentioned about
+millennium -> millenium, milennium
+misspell -> mispell, misspel
+much -> many
+must -> must to
+myself -> me
+mysterious -> misterius, misterious
+naturally -> naturaly
+necessary -> neccessary, necessery, nesessary
+need -> need in
+needed -> needed in
+needs -> needs in
+neighbor -> nieghbor
+neither -> niether
+nephew -> nephiew
+niece -> neice
+noticeable -> noticable
+occasion -> occassion
+occasionally -> occasionaly, occassionally
+occurred -> occured
+occurrence -> occurrance, occurence
+occurring -> occuring
+official -> oficial
+often -> offen
+omission -> ommision, omision
+on -> at, in
+opportunity -> oppurtunity
+original -> orignal
+other -> another, others
+others -> another, other
+ours -> our
+ourselves -> ourself, us
+outrageous -> outragous
+paid -> payed
+parallel -> parrallel, parellel
+particularly -> particurly
+pastime -> passtime, pasttime
+peculiar -> peculier
+people -> peoples, persons
+perceive -> percieve
+percentage -> percent
+perform -> preform
+permanent -> pernament
+perseverance -> perseverence
+person -> people
+personally -> personaly
+personnel -> personell, personel, personal
+piece -> peice
+planning -> planing
+pleasant -> plesant
+political -> pollitical
+possession -> posession, possesion
+possible -> posible
+potatoes -> potatos
+practical -> practicle
+precede -> preceed
+preceding -> preceeding
+presence -> presance
+principal -> prinsipal
+principle -> principal
+privilege -> privelege, priviledge
+probably -> probly
+professional -> proffesional
+professor -> professer
+promise -> promiss
+pronunciation -> pronounciation
+proof -> prufe
+proper -> correct
+properly -> correctly
+prophecy -> prophesy
+psychology -> psycology
+publicly -> publically
+quantity -> quanity
+quarantine -> quarentine
+questionnaire -> questionaire, questionnair
+queue -> que
+quiet -> quite
+quite -> quiet
+realize -> relize
+really -> realy, so
+receipt -> reciept
+receive -> recieve
+received -> recieved
+recognize -> reckognize
+recommend -> recomend, reccommend
+reference -> referance, refrence
+referred -> refered
+relevant -> relevent
+religious -> religous, religius
+repetition -> repitition
+restaurant -> restarant
+rhyme -> rime, ryme
+rhythm -> rythm, rythem
+ridiculous -> rediculous, ridicolous
+said -> told
+say -> tell
+saying -> telling
+says -> tells
+secretary -> secretery
+seize -> sieze
+separate -> seperate
+shining -> shineing
+should -> should to
+similar -> similer, simmilar, simular, similiar
+sincerely -> sinceerly, sincerly
+skilful -> skilfull
+solve -> decide
+solved -> decided
+some -> any
+speech -> speach, speeche
+stopped -> stoped
+stopping -> stoping
+strength -> strenght
+studying -> studing
+succeed -> succede
+successful -> succesful, successfull, sucessful
+such -> so
+supersede -> supercede
+surely -> surelly
+surprise -> suprise, surprize
+talked -> told
+teach -> learn
+taught -> learned
+tell -> say
+telling -> saying
+tells -> says
+temperature -> temperture
+than -> then
+the -> a, 
+their -> there
+their -> they're
+theirs -> their
+them -> they
+themselves -> themself, them
+then -> than
+there -> their
+these -> this
+those -> that
+to -> for
+told -> said
+tomatoes -> tomatos
+tomorrow -> tommorrow
+tries -> trys
+truly -> truely, trully
+tyranny -> tyrany
+underrate -> underate
+until -> untill
+unusual -> unuseual
+us -> we
+usable -> usible
+using -> useing
+usually -> usualy
+vacuum -> vaccuum, vacume
+vegetarian -> vegatarian
+vehicle -> vehical
+village -> villege
+was -> were, 
+weather -> wether
+wednesday -> wendesday
+weird -> wierd
+welcome -> wellcome
+well -> good
+were -> was, 
+what -> that
+whether -> wether
+which -> wich, witch
+who -> which
+will -> would
+would -> will
+writing -> writting, writeing
+written -> writen
+you're -> your
+your -> you're
+yours -> your
+yourself -> you
+yourselves -> you
