@@ -72,60 +72,6 @@ def get_gap_info(num_gaps):
         return ' {}'.format(num_gaps)
 
 
-def get_punc(word):
-    """
-Return (left_punc_string, right_punc_string):
-    "Cat -> ('"', '')
-    cat, -> ('', ',')
-    'cat' -> ("'", "'")
-    cat's -> ('', "'s")
-    cat-powered -> ('', '-powered')
-        etc.
-"""
-    return get_word_and_punc(word)[1:]
-
-
-def get_word_and_punc(word):
-    """
-Return (word_without_punc, left_punc_string, right_punc_string):
-"Cat -> ('Cat', '"', '')
-cat, -> ('cat', '', ',')
-'cat' -> ('cat', "'", "'")
-cat's -> ('cat's', '', "")
-"cat-powered" -> ('cat-powered', '"', '"')
-    etc.
-"""
-    if word.isalnum():  # check for the most frequent input
-        return word, '', ''
-    lpunc = ''
-    word_starts = 0
-    for i, c in enumerate(word):
-        if not c.isalnum():
-            lpunc += c
-        else:
-            word_starts = i
-            break
-    rpunc = ''
-    word_ends = 0
-    for i, c in enumerate(word[::-1]):
-        if not c.isalnum():
-            rpunc += c
-        else:
-            word_ends = len(word) - i
-            break
-    if rpunc:
-        rpunc = rpunc[::-1]
-    word_no_punc = word[word_starts:word_ends]
-    return word_no_punc, lpunc, rpunc
-
-
-def has_digit(chars):
-    """
-Return True if any of the chars is numeric.
-"""
-    return any((c.isdigit() for c in chars))
-
-
 def ind_from_dict(ind_dict, n, prox=2):
     """
 Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
@@ -212,14 +158,6 @@ def main():
     quit()
 
 
-def make_paragraphs(words, par_ind):
-    """Make paragraphs and return text as a string."""
-    for i in par_ind:
-        words[i] += PARAGRAPH_MARKER
-    text = ' '.join([w for w in words if w])
-    return text.replace(PARAGRAPH_MARKER+' ', '\n\n')
-
-
 def mean(seq, round_digits=3):
     n = len(seq)
     if n == 0:
@@ -240,10 +178,6 @@ def num_to_letter(n):
     letters = string.ascii_lowercase
     a, b = divmod(n, 26)
     return '{}{}'.format(letters[b], a if a > 0 else '')
-
-
-def remove_punc(word):
-    return get_word_and_punc(word)[0]
 
 
 def safely_remove_word(i, end, orig_no_punc, ex_text, punc):
@@ -269,19 +203,6 @@ def save_ex(text_output, file_id, mode_id):
         f.write(text_output.split('ANSWERS')[0])
     with open(jp(CWD, 'output', file_id, '{} ({}) (with key).txt'.format(file_id, mode_id)), 'w') as f:
         f.write(text_output)
-
-
-def smart_cap(word):
-    w = ''
-    for i, c in enumerate(word):
-        if c.isalpha():
-            w += c.capitalize()
-            w += word[i + 1:]
-            break
-        elif c.isdigit():  # do not capitalize words starting with digits, like 14-year-old
-            return word
-        w += c
-    return w
 
 
 def quit():
