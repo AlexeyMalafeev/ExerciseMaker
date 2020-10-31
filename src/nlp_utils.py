@@ -64,6 +64,22 @@ def remove_punc(word):
     return get_word_and_punc(word)[0]
 
 
+def safely_remove_word(i, end, orig_no_punc, ex_text, punc):
+    # capitalize following word
+    orig_w = orig_no_punc[i]
+    if orig_w[0].isupper() and (not orig_w.isupper() or len(orig_w) == 1):
+        if i != (end - 1):
+            ex_text[i + 1] = smart_cap(ex_text[i + 1])
+    lpunc, rpunc = punc[i]
+    # add punc to following word
+    if lpunc and i != (end - 1):
+        ex_text[i + 1] = lpunc + ex_text[i + 1]
+    # add punc to previous word
+    if rpunc and i != 0:
+        ex_text[i - 1] += rpunc
+    ex_text[i] = ''
+
+
 def smart_cap(word):
     w = ''
     for i, c in enumerate(word):

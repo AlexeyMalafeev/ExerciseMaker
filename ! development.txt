@@ -1,3 +1,14 @@
+PLAN
+
+- unittest
+- logging
+- black
+- Path
+- newer wordbank?
+- spacy
+- flair
+
+
 TBD:
 ===
 
