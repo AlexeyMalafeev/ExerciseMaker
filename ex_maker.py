@@ -1,10 +1,5 @@
-#! python3
-
-
-import random
 import os
 import sys
-import traceback
 
 
 log = []
@@ -83,12 +78,6 @@ def save_ex(text_output, file_id, mode_id):
         f.write(text_output.split('ANSWERS')[0])
     with open(jp(CWD, 'output', file_id, '{} ({}) (with key).txt'.format(file_id, mode_id)), 'w') as f:
         f.write(text_output)
-
-
-def quit():
-    dump_log()
-    input(' Press Enter to exit...')
-    sys.exit()
         
 
 if __name__ == '__main__':

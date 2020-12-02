@@ -1,5 +1,8 @@
 PLAN
 
++ separate modules
+- refactoring
+
 - unittest
 - logging
 - black
@@ -7,6 +10,7 @@ PLAN
 - newer wordbank?
 - spacy
 - flair
+- flask
 
 
 TBD:
