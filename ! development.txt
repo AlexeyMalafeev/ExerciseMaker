@@ -1,3 +1,18 @@
+PLAN
+
++ separate modules
+- refactoring
+
+- unittest
+- logging
+- black
+- Path
+- newer wordbank?
+- spacy
+- flair
+- flask
+
+
 TBD:
 ===
 
@@ -13,7 +28,8 @@ deriv:
 
  export word candidates for derivation not already on the database (use list of known affixes)
 
- remove ...ise -> ...ized; ...fy -> ...fied (unnecessary 'derivatives'), use rule: first word in line ends in 'ise' and then line has forms 'ises', 'ising', etc.
+ remove ...ise -> ...ized; ...fy -> ...fied (unnecessary 'derivatives'), use rule: first word in
+ line ends in 'ise' and then line has forms 'ises', 'ising', etc.
 
  affix list in Word Part Level Test?
 
@@ -56,7 +72,10 @@ errors:
 fragments: 
 ---------
 
- formatting issue (quote after, not before gap): It added: (5) "There is no intention to humiliate women. In contrast, we want to tell the men to learn from women on how to take care of clothes." -> It added: (5) __________". In contrast, we want to tell the men to learn from women on how to take care of clothes."
+ formatting issue (quote after, not before gap): It added: (5) "There is no intention to humiliate
+ women. In contrast, we want to tell the men to learn from women on how to take care of clothes."
+ -> It added: (5) __________". In contrast, we want to tell the men to learn from women on how to
+ take care of clothes."
 
  a) i get it done
  f) i pay the rent," she said
@@ -70,7 +89,9 @@ fragments:
 general:
 -------
 
- work with the target vocabulary only (get word lists and inflect): in this way no sophisticated NLP like, for example, named entity recognition is needed. If the word is unknown, no need to make gaps/errors with it.
+ work with the target vocabulary only (get word lists and inflect): in this way no sophisticated
+ NLP like, for example, named entity recognition is needed. If the word is unknown, no need to make
+ gaps/errors with it.
 
  word order exercise
 
@@ -86,7 +107,8 @@ general:
 
  optimize making variants of exercise (don't do the whole thing every time)
 
- what kind of sentences are _generally_ good for making gaps in? (sentence length, punctuation, other factors?)
+ what kind of sentences are _generally_ good for making gaps in? (sentence length, punctuation,
+ other factors?)
 
  don't make gaps in first sentence (establishes context)
 
@@ -122,7 +144,8 @@ open cloze:
 
  use probability (high prob -> can remove), esp. content words
 
- do not make gaps in a single-word / unfinished sentence: I must go. However... (�) -/-> I must go. _____...
+ do not make gaps in a single-word / unfinished sentence: I must go. However... (�) -/-> I must go.
+ _____...
 
  BEC Higher has open cloze too
 
@@ -132,7 +155,8 @@ open cloze:
 
  experiment with content words, e.g. time, came etc.?
 
- 'What Money Can't Buy' - title of a book, 'what' removed - check if no rpunc, following word capitalized, not beginning of a sentence
+ 'What Money Can't Buy' - title of a book, 'what' removed - check if no rpunc, following word
+ capitalized, not beginning of a sentence
 
  add negative auxilaries?
 
