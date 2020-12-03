@@ -46,7 +46,9 @@ COMPL_MEASURES = 'rare1_ratio rare2_ratio sen_ratio'.split()
 # load derivatives
 dr = jp(LANG_DIR, 'derivatives.txt')
 temp_wf_list = [line.split() for line in open(dr)]
-DERIV_DICT = dict([(words[x], words[0]) for words in temp_wf_list for x in range(len(words)) if x != 0])
+DERIV_DICT = dict(
+    [(words[x], words[0]) for words in temp_wf_list for x in range(len(words)) if x != 0]
+)
 
 
 # load verb forms (dict)
@@ -87,20 +89,34 @@ for line in open(dr):
 
 # open close words
 ARTICLES = set('a an the'.split())
-AUXILIARIES = set('''am are be been being did do does doing done is has have having had was were will would'''.split())
-CONJUNCTIONS = set('''although and as because besides but how however nor or since so that then therefore though until
-when where whereas while'''.split())
-PREPOSITIONS = set('''about above after around at away before below between by despite down during for from in
-into of off on onto out over than through under up with within without'''.split())
-PRONOUNS = set('''all another any anybody anyone anything enough every everybody everyone everything it its least
+AUXILIARIES = set(
+    '''am are be been being did do does doing done is has have having had was were will would'''.split()
+)
+CONJUNCTIONS = set(
+    '''although and as because besides but how however nor or since so that then therefore though until
+when where whereas while'''.split()
+)
+PREPOSITIONS = set(
+    '''about above after around at away before below between by despite down during for from in
+into of off on onto out over than through under up with within without'''.split()
+)
+PRONOUNS = set(
+    '''all another any anybody anyone anything enough every everybody everyone everything it its least
 less many more most much no nobody none nothing one other others some somebody someone something such there what who
-which'''.split())
-ADDED = set('''again against ago anywhere apart back behind could each either few hardly if itself just never not
+which'''.split()
+)
+ADDED = set(
+    '''again against ago anywhere apart back behind could each either few hardly if itself just never not
 only ought rather regardless same scarcely should somewhere these this those throughout till too whatever whether whilst
-whose why yet'''.split())
-OPEN_CLOZE_EASY = set('''a an and another any are at but for from in is it many much of on or some the there to was
-were what who will with'''.split())
-OPEN_CLOZE_HARD = (ARTICLES | AUXILIARIES | CONJUNCTIONS | PREPOSITIONS | PRONOUNS | ADDED | set('to'))
+whose why yet'''.split()
+)
+OPEN_CLOZE_EASY = set(
+    '''a an and another any are at but for from in is it many much of on or some the there to was
+were what who will with'''.split()
+)
+OPEN_CLOZE_HARD = (
+    ARTICLES | AUXILIARIES | CONJUNCTIONS | PREPOSITIONS | PRONOUNS | ADDED | set('to')
+)
 ##open('oc words.txt', 'w').write(' '.join(sorted(OPEN_CLOZE_HARD)))
 
 # ordered open cloze words
@@ -112,8 +128,12 @@ CPE_ORDER = open(jp(LANG_DIR, 'oc_order_cpe.txt')).read().split()
 CPE_SET = set(CPE_ORDER)
 
 # fragments
-FRAG_AFTER = set('say says said saying tell tells told telling think thinks thought thinking'.split())
-FRAG_FROM = set('''after although and anything anywhere as because but despite if regardless since so than that though till until what whatever when where whereas whether which while who whose why with yet'''.split())
+FRAG_AFTER = set(
+    'say says said saying tell tells told telling think thinks thought thinking'.split()
+)
+FRAG_FROM = set(
+    '''after although and anything anywhere as because but despite if regardless since so than that though till until what whatever when where whereas whether which while who whose why with yet'''.split()
+)
 
 COMMON2000 = set(open(jp(LANG_DIR, 'common_2000+.txt')).read().split())
 COMMON10000 = set(open(jp(LANG_DIR, 'common_10000+.txt')).read().split())
@@ -124,31 +144,33 @@ log = []
 
 def all_exercises(text_obj):
     """
-Do all modes and return stats dict.
-"""
+    Do all modes and return stats dict."""
     stats = {}
-    stats_mapping = [('_title_', 'file_name'),
-                     ('_word_count_', 'word_count'),
-                     ('_uword_count_', 'uword_count'),
-                     ('_sent_count_', 'sent_count')]
+    stats_mapping = [
+        ('_title_', 'file_name'),
+        ('_word_count_', 'word_count'),
+        ('_uword_count_', 'uword_count'),
+        ('_sent_count_', 'sent_count'),
+    ]
     for k, v in stats_mapping:
         stats[k] = getattr(text_obj, v, 'undefined')
     std_args = ({'max_num_gaps': 0}, {'max_num_gaps': 10}, {'max_num_gaps': 20})
     # legend: ex_class, init_args, make_ex_args
-    exs = ((DerivMaker, (), std_args),
-           (ErrorMaker, (), std_args),
-           (FragmentMaker, (FRAG_AFTER, FRAG_FROM, 'short', 7), ({'max_num_gaps': 10},)),
-           (FragmentMaker, (FRAG_AFTER, FRAG_FROM, 'long', 12), ({'max_num_gaps': 10},)),
-           (MissWordsMaker, (ARTICLES, 'articles'), ({'max_num_gaps': 0},)),
-           (OpenClozeMaker, (OPEN_CLOZE_EASY, 'e'), ({'max_num_gaps': 0},)),
-           (OpenClozeMaker, (OPEN_CLOZE_HARD, 'h'), std_args),
-           (OrderedOpenClozeMaker, (FCE_SET, FCE_ORDER, 'fce'), ({'max_num_gaps': 15},)),
-           (OrderedOpenClozeMaker, (CAE_SET, CAE_ORDER, 'cae'), ({'max_num_gaps': 15},)),
-           (OrderedOpenClozeMaker, (CPE_SET, CPE_ORDER, 'cpe'), ({'max_num_gaps': 15},)),
-           (PrepositionsMWM, (), ({'max_num_gaps': 0},)),
-           (SimpleVFormsMaker, (), ({'max_num_gaps': 0},)),
-           (AdvVFormsMaker, (), std_args),
-           (WordbankMaker, (), std_args)
+    exs = (
+        (DerivMaker, (), std_args),
+        (ErrorMaker, (), std_args),
+        (FragmentMaker, (FRAG_AFTER, FRAG_FROM, 'short', 7), ({'max_num_gaps': 10},)),
+        (FragmentMaker, (FRAG_AFTER, FRAG_FROM, 'long', 12), ({'max_num_gaps': 10},)),
+        (MissWordsMaker, (ARTICLES, 'articles'), ({'max_num_gaps': 0},)),
+        (OpenClozeMaker, (OPEN_CLOZE_EASY, 'e'), ({'max_num_gaps': 0},)),
+        (OpenClozeMaker, (OPEN_CLOZE_HARD, 'h'), std_args),
+        (OrderedOpenClozeMaker, (FCE_SET, FCE_ORDER, 'fce'), ({'max_num_gaps': 15},)),
+        (OrderedOpenClozeMaker, (CAE_SET, CAE_ORDER, 'cae'), ({'max_num_gaps': 15},)),
+        (OrderedOpenClozeMaker, (CPE_SET, CPE_ORDER, 'cpe'), ({'max_num_gaps': 15},)),
+        (PrepositionsMWM, (), ({'max_num_gaps': 0},)),
+        (SimpleVFormsMaker, (), ({'max_num_gaps': 0},)),
+        (AdvVFormsMaker, (), std_args),
+        (WordbankMaker, (), std_args),
     )
     for ex_class, init_args, arg_dicts in exs:
         init_args = (text_obj,) + init_args
@@ -171,9 +193,9 @@ def ensure_dir(directory):
 
 def get_gap_info(num_gaps):
     """Return string:
-        0           -> ''
-        0.9 (< 1)   -> '90%'
-        15 (> 1)    -> '15'"""
+    0           -> ''
+    0.9 (< 1)   -> '90%'
+    15 (> 1)    -> '15'"""
     if num_gaps == 0:
         return ''
     elif num_gaps <= 1:
@@ -184,14 +206,13 @@ def get_gap_info(num_gaps):
 
 def get_punc(word):
     """
-Return (left_punc_string, right_punc_string):
-    "Cat -> ('"', '')
-    cat, -> ('', ',')
-    'cat' -> ("'", "'")
-    cat's -> ('', "'s")
-    cat-powered -> ('', '-powered')
-        etc.
-"""
+    Return (left_punc_string, right_punc_string):
+        "Cat -> ('"', '')
+        cat, -> ('', ',')
+        'cat' -> ("'", "'")
+        cat's -> ('', "'s")
+        cat-powered -> ('', '-powered')
+            etc."""
     return get_word_and_punc(word)[1:]
 
 
@@ -201,14 +222,13 @@ def get_ratio(val_a, val_b):
 
 def get_word_and_punc(word):
     """
-Return (word_without_punc, left_punc_string, right_punc_string):
-"Cat -> ('Cat', '"', '')
-cat, -> ('cat', '', ',')
-'cat' -> ('cat', "'", "'")
-cat's -> ('cat's', '', "")
-"cat-powered" -> ('cat-powered', '"', '"')
-    etc.
-"""
+    Return (word_without_punc, left_punc_string, right_punc_string):
+    "Cat -> ('Cat', '"', '')
+    cat, -> ('cat', '', ',')
+    'cat' -> ('cat', "'", "'")
+    cat's -> ('cat's', '', "")
+    "cat-powered" -> ('cat-powered', '"', '"')
+        etc."""
     if word.isalnum():  # check for the most frequent input
         return word, '', ''
     lpunc = ''
@@ -235,17 +255,15 @@ cat's -> ('cat's', '', "")
 
 def has_digit(chars):
     """
-Return True if any of the chars is numeric.
-"""
+    Return True if any of the chars is numeric."""
     return any((c.isdigit() for c in chars))
 
 
 def ind_from_dict(ind_dict, n, prox=2):
     """
-Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
-with minimum difference (prox) between all indices.
-Shortest lists of indices have a priority.
-"""
+    Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
+    with minimum difference (prox) between all indices.
+    Shortest lists of indices have a priority."""
     ind = [ig[:] for ig in ind_dict.values()]
     ind.sort(key=len, reverse=True)
     new = []
@@ -264,10 +282,9 @@ Shortest lists of indices have a priority.
 
 def ind_from_dict_ordered(ind_dict, order, n, prox=2):
     """
-Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
-with minimum difference (prox) between all indices.
-Ordered (order = [word1, word2, ...]): words have a priority over _preceding_ words.
-"""
+    Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
+    with minimum difference (prox) between all indices.
+    Ordered (order = [word1, word2, ...]): words have a priority over _preceding_ words."""
     ind = []
     for w in order:
         if w in ind_dict:
@@ -288,9 +305,8 @@ Ordered (order = [word1, word2, ...]): words have a priority over _preceding_ wo
 
 def ind_from_list(ind_list, n, prox=2):
     """
-Randomly choose a number (n) of indices from list (ind_list)
-with minimum difference (prox) between all indexes.
-"""
+    Randomly choose a number (n) of indices from list (ind_list)
+    with minimum difference (prox) between all indexes."""
     ind = set(ind_list)
     new = []
     while len(new) < n and ind != set():
@@ -331,7 +347,7 @@ def make_paragraphs(words, par_ind):
     for i in par_ind:
         words[i] += PARAGRAPH_MARKER
     text = ' '.join([w for w in words if w])
-    return text.replace(PARAGRAPH_MARKER+' ', '\n\n')
+    return text.replace(PARAGRAPH_MARKER + ' ', '\n\n')
 
 
 def mean(seq, round_digits=3):
@@ -351,6 +367,7 @@ def num_to_letter(n):
     100 -> w3
     1000000 -> o38461"""
     import string
+
     letters = string.ascii_lowercase
     a, b = divmod(n, 26)
     return '{}{}'.format(letters[b], a if a > 0 else '')
@@ -420,7 +437,9 @@ def save_ex(text_output, file_id, mode_id):
     text_output = text_output.replace(NEW_LINE_MARKER, '\n\n')
     with open(jp(CWD, 'output', file_id, '{} ({}).txt'.format(file_id, mode_id)), 'w') as f:
         f.write(text_output.split('ANSWERS')[0])
-    with open(jp(CWD, 'output', file_id, '{} ({}) (with key).txt'.format(file_id, mode_id)), 'w') as f:
+    with open(
+        jp(CWD, 'output', file_id, '{} ({}) (with key).txt'.format(file_id, mode_id)), 'w'
+    ) as f:
         f.write(text_output)
 
 
@@ -447,7 +466,7 @@ def smart_cap(word):
     for i, c in enumerate(word):
         if c.isalpha():
             w += c.capitalize()
-            w += word[i + 1:]
+            w += word[i + 1 :]
             break
         elif c.isdigit():  # do not capitalize words starting with digits, like 14-year-old
             return word
@@ -510,7 +529,7 @@ class TextObject(object):
 
             if i != end:
                 nw = self.words_no_punc[i + 1]
-                cond2 = ((nw and nw[0].isupper()) or self.words[i] == NEW_LINE_MARKER_S)  # i+1?
+                cond2 = (nw and nw[0].isupper()) or self.words[i] == NEW_LINE_MARKER_S  # i+1?
             else:
                 cond2 = False
 
@@ -530,7 +549,6 @@ class TextObject(object):
             target_dir = jp(OUTPUT_DIR, self.file_name)
         self.target_dir = target_dir
         ensure_dir(self.target_dir)
-
 
     def measure_compl(self):
         word_lengths = [len(w) for w in self.words_set]
@@ -572,7 +590,7 @@ class TextObject(object):
         # sentences
         with open(jp(tdir, '[sent].txt'), 'w') as f:
             sens = [' '.join((w for w in s)) for s in self.sentences]
-            sens_st = ('\n'.join(('{}. {}'.format(i + 1, s) for i, s in enumerate(sens))))
+            sens_st = '\n'.join(('{}. {}'.format(i + 1, s) for i, s in enumerate(sens)))
             f.write(sens_st)
 
         # rare words
@@ -600,7 +618,6 @@ class BaseExMaker(object):
 
         self.first_pass()
 
-
     def first_pass(self):
         input('first_pass for {} is not implemented'.format(self.__class__.__name__))
 
@@ -624,8 +641,8 @@ class BaseExMaker(object):
 
     def save(self):
         """
-Save self.ex_text_string and self.ans_key_string to a text file;
-self.instr and self.tag should also be defined within the subclass."""
+        Save self.ex_text_string and self.ans_key_string to a text file;
+        self.instr and self.tag should also be defined within the subclass."""
         self.ex_text_string = self.ex_text_string.replace(NEW_LINE_MARKER, '\n\n')
         self.ans_key_string = self.ans_key_string.replace(NEW_LINE_MARKER, '\n\n')
         fn = self.text_obj.file_name
@@ -647,7 +664,8 @@ self.instr and self.tag should also be defined within the subclass."""
 
 class GapMaker(BaseExMaker):
     """General GapMaker class. Not to be instantiated directly.
-Needs: instr, tag, check_condition(i, w), make_gap(i, count)."""
+    Needs: instr, tag, check_condition(i, w), make_gap(i, count)."""
+
     ans_key_is_text = False
     max_num_gaps = 0
     gap_distance = 3
@@ -814,10 +832,10 @@ class FragmentMaker(GapMaker):
 
     def check_condition(self, i, w):
         curr_sen_ind = self.sen_mask[i]
-        prev_w = self.text[i-1] if i != 0 else ''
-        prev_rpunc = self.punc[i-1][1] if i != 0 else ''
+        prev_w = self.text[i - 1] if i != 0 else ''
+        prev_rpunc = self.punc[i - 1][1] if i != 0 else ''
         rpunc = self.punc[i][1]
-        prev_sen_ind = self.sen_mask[i-1] if i != 0 else -1
+        prev_sen_ind = self.sen_mask[i - 1] if i != 0 else -1
         if curr_sen_ind == self.mark_sen:
             # if we have marked some words in this sentence already
             if curr_sen_ind == self.skip_sen:
@@ -830,7 +848,9 @@ class FragmentMaker(GapMaker):
             else:
                 # if we have marked at least one word and want to continue marking (no end of clause)
                 return True
-        elif (w in self.frag_from or prev_w in self.frag_after or (prev_rpunc and prev_rpunc in ',;:')) and prev_sen_ind == curr_sen_ind:
+        elif (
+            w in self.frag_from or prev_w in self.frag_after or (prev_rpunc and prev_rpunc in ',;:')
+        ) and prev_sen_ind == curr_sen_ind:
             # if we can start marking words in a new sentence
             self.mark_sen = curr_sen_ind
             return True
@@ -842,7 +862,9 @@ class FragmentMaker(GapMaker):
         random.shuffle(order)
         for j, n in enumerate(order):
             frag = ' '.join([self.orig_with_punc[i] for i in self.indices[n]])
-            frag = remove_punc(frag)  # this removes the punctuation at the beginning and at the end of the fragment
+            frag = remove_punc(
+                frag
+            )  # this removes the punctuation at the beginning and at the end of the fragment
             frag = frag[0].lower() + frag[1:]  # hide the capitalization of the first letter
             new_frag = '{}) '.format(num_to_letter(j)) + frag
             fragments.append(new_frag)
@@ -854,8 +876,9 @@ class FragmentMaker(GapMaker):
         gap_starts = gap_indices[0]
         gap_ends = gap_indices[-1]
         if i == gap_starts:
-            self.ex_text[i] = '({}) {}{}{}{}'.format(self.count, GAP, GAP, self.punc[gap_starts][0],
-                                                     self.punc[gap_ends][1])
+            self.ex_text[i] = '({}) {}{}{}{}'.format(
+                self.count, GAP, GAP, self.punc[gap_starts][0], self.punc[gap_ends][1]
+            )
             self.ans_key[i] = '({}) {}'.format(self.count, self.orig_with_punc[i])
             self.count += 1
         # elif i == gap_ends:
@@ -884,7 +907,7 @@ class FragmentMaker(GapMaker):
         if len(sample_dict) > self.max_num_gaps:  # check if there are not too many fragments
             random.shuffle(keep_keys)
             # remove some fragments if too many
-            keep_keys, extra = keep_keys[:self.max_num_gaps], keep_keys[self.max_num_gaps:]
+            keep_keys, extra = keep_keys[: self.max_num_gaps], keep_keys[self.max_num_gaps :]
             del_keys.extend(extra)
         for k in del_keys:
             del self.indices[k]  # still need to delete these for correct finalization
@@ -966,10 +989,12 @@ class OrderedOpenClozeMaker(OpenClozeMaker):
 
 
 class PrepositionsMWM(MissWordsMaker):
-    words_after_to = set('''a an the some any no this that these those me you him her it its itself us them my mine
+    words_after_to = set(
+        '''a an the some any no this that these those me you him her it its itself us them my mine
     myself your yours yourself his himself hers herself our ours ourselves their theirs themselves what whatever who
     whom whoever something anything nothing someone anyone somebody anybody nobody somewhere anywhere nowhere such
-    each all one two three four five six seven eight nine ten eleven twelve'''.split())
+    each all one two three four five six seven eight nine ten eleven twelve'''.split()
+    )
 
     def __init__(self, text_obj):
         rem_words = PREPOSITIONS
@@ -979,14 +1004,19 @@ class PrepositionsMWM(MissWordsMaker):
     def check_condition(self, i, w):
         orig_w = self.orig_no_punc[i]
         try:
-            next_w = self.orig_no_punc[i+1]
-            different_sentences = self.text_obj.sen_mask[i] != self.text_obj.sen_mask[i+1]
+            next_w = self.orig_no_punc[i + 1]
+            different_sentences = self.text_obj.sen_mask[i] != self.text_obj.sen_mask[i + 1]
         except IndexError:
             next_w = ''
             different_sentences = True
-        condition_for_to = w == 'to' and (next_w in self.words_after_to or next_w.istitle() or has_digit(next_w) or
-                                          not next_w or different_sentences or
-                                          (len(next_w) > 5 and next_w.endswith('ing')))
+        condition_for_to = w == 'to' and (
+            next_w in self.words_after_to
+            or next_w.istitle()
+            or has_digit(next_w)
+            or not next_w
+            or different_sentences
+            or (len(next_w) > 5 and next_w.endswith('ing'))
+        )
         return (orig_w[1:].islower() or len(w) == 1) and (w in self.rem_words or condition_for_to)
 
 
@@ -996,10 +1026,13 @@ class SimpleVFormsMaker(GapMaker):
 
     def check_condition(self, i, w):
         orig_w = self.orig_no_punc[i]
-        not_after_to = i == 0 or self.text[i-1] != 'to'
+        not_after_to = i == 0 or self.text[i - 1] != 'to'
         is_v1 = w in V1FORMS
-        return (w in self.vforms and not orig_w[0].isupper()  # avoid clashes with names
-                and (not is_v1 or not_after_to))  # avoid to + V1, too obvious
+        return (
+            w in self.vforms
+            and not orig_w[0].isupper()  # avoid clashes with names
+            and (not is_v1 or not_after_to)
+        )  # avoid to + V1, too obvious
 
     def make_gap(self, i, count):
         w = self.text[i]
@@ -1014,11 +1047,16 @@ class SimpleVFormsMaker(GapMaker):
     def set_tag(self):
         self.tag = '[verbs {}{}]'.format(self.submode, get_gap_info(self.max_num_gaps))
 
+
 class AdvVFormsMaker(SimpleVFormsMaker):
     vforms = VFORMS
     skip_adverbs = SKIP_ADVERBS
-    aux_pos = set('am is are was were be been being have has had having will would do does did'.split())
-    aux_neg = set("not isn't aren't wasn't weren't don't doesn't didn't won't wouldn't haven't hasn't hadn't".split())
+    aux_pos = set(
+        'am is are was were be been being have has had having will would do does did'.split()
+    )
+    aux_neg = set(
+        "not isn't aren't wasn't weren't don't doesn't didn't won't wouldn't haven't hasn't hadn't".split()
+    )
     submode = 'h'
 
     def make_gap(self, i, count):
@@ -1049,7 +1087,7 @@ class AdvVFormsMaker(SimpleVFormsMaker):
         lpunc, rpunc = self.punc[i]
         self.ex_text[i] = '({}){}{}({}){}'.format(count, lpunc, GAP, lemma, rpunc)
 
-        
+
 class WordbankMaker(GapMaker):
     def check_condition(self, i, w):
         return (self.orig_no_punc[i].islower() and self.text.count(w) == 1) and w in COMMON10000
@@ -1074,7 +1112,7 @@ class WordbankMaker(GapMaker):
 
     def set_tag(self):
         self.tag = '[wordbank{}]'.format(get_gap_info(self.max_num_gaps))
-        
+
 
 if __name__ == '__main__':
     try:
@@ -1084,4 +1122,3 @@ if __name__ == '__main__':
         traceback.print_exc()
         dump_log()
         input('')
-
