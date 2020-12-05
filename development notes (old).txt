@@ -1,0 +1,175 @@
+PLAN
+
++ separate modules
+- refactoring
+
+- unittest
+- pytest
+- logging
+- black
+- Path
+- newer wordbank?
+- spacy
+- flair
+- flask
+
+- new types of exercises?
+
+
+TBD:
+===
+
+articles:
+--------
+
+ remove only 10/20 articles, not all (the same for prepositions)
+ 
+deriv:
+-----
+
+ auto-expand the dict: ...able -> ...ably etc.
+
+ export word candidates for derivation not already on the database (use list of known affixes)
+
+ remove ...ise -> ...ized; ...fy -> ...fied (unnecessary 'derivatives'), use rule: first word in
+ line ends in 'ise' and then line has forms 'ises', 'ising', etc.
+
+ affix list in Word Part Level Test?
+
+ remove pre... from derivatives
+
+ wife-wives?
+ 
+ used once in the text?
+
+ classic derivatives and inflections+derivatives
+
+errors:
+------
+
+ use edit distance for error generation
+
+ to v1 -> to v3
+
+ key point -> key moment
+
+ V2 instead of V1, V3 etc. (irregular verbs)
+
+ same vs. such
+
+ felt -> fell
+
+ 's -> ''
+
+ http://www.correctenglish.ru/mistakes/
+ (common lexical and grammatical errors)
+
+ only grammar, only spelling, grammar & spelling
+
+ errors in phrases, not only separate words
+
+ get errors from Longman Common Errors
+
+ A grade bug -> A is not an article (add to exceptions?)
+
+fragments: 
+---------
+
+ formatting issue (quote after, not before gap): It added: (5) "There is no intention to humiliate
+ women. In contrast, we want to tell the men to learn from women on how to take care of clothes."
+ -> It added: (5) __________". In contrast, we want to tell the men to learn from women on how to
+ take care of clothes."
+
+ a) i get it done
+ f) i pay the rent," she said
+ 
+ mark beginning and ending of fragments in answers
+ 
+ add submodes?
+ 
+ set percentage of fragments to remove?
+ 
+general:
+-------
+
+ work with the target vocabulary only (get word lists and inflect): in this way no sophisticated
+ NLP like, for example, named entity recognition is needed. If the word is unknown, no need to make
+ gaps/errors with it.
+
+ word order exercise
+
+ stems?
+
+ stats: general (how many texts/exercise files, how many total gaps etc.)
+
+ rank texts in size; categorize and find 'similar' texts (difficulty and size)
+
+ extract collocations from text (+ new exercise type?)
+
+ stats: cumulative gaps made per exercise type?
+
+ optimize making variants of exercise (don't do the whole thing every time)
+
+ what kind of sentences are _generally_ good for making gaps in? (sentence length, punctuation,
+ other factors?)
+
+ don't make gaps in first sentence (establishes context)
+
+ external settings for exercise types (presets)
+
+ calibrate complexity rates with Cambridge texts (Lexile?), make standards (E, PI, I, UI, A)
+
+ multiple choice & word frequency?
+
+ tokenize differently: well-cared -> well-cared (hyphen shouldn't go to punc!)
+
+ put rare1, rare2 and acad words in ONE file in each subfolder
+
+ determiners exercise: a, the, some, this, every, these, another?
+
+ autocheck tasks?
+
+ removed sentences task
+
+ use common readability measures (Flesch etc.)
+
+ use definitions from NGSL for exercises
+
+ split sentences at semicolons? - this should make sentence length ratio more accurate? or not?
+
+multiple choice:
+---------------
+
+ find a way to generate distractors
+
+open cloze:
+----------
+
+ use probability (high prob -> can remove), esp. content words
+
+ do not make gaps in a single-word / unfinished sentence: I must go. However... (�) -/-> I must go.
+ _____...
+
+ BEC Higher has open cloze too
+
+ make gap per sentence? or just wider distance between gaps (min(3 or factor of num of sentences))
+
+ group words within wordlists? e.g. ('although', 'though') to avoid repetition? articles too?
+
+ experiment with content words, e.g. time, came etc.?
+
+ 'What Money Can't Buy' - title of a book, 'what' removed - check if no rpunc, following word
+ capitalized, not beginning of a sentence
+
+ add negative auxilaries?
+
+verbs:
+-----
+
+ give preference to longer questions (is becoming > became)
+
+ verbs that can be nouns but are used after didn't, hasn't etc. -> verb forms
+
+ verbs h answ key: (11) completely severed
+
+ verbs that are homonyms of nouns/adjectives - use tagging (nltk?)
