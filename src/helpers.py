@@ -1,4 +1,4 @@
-jp = os.path.join
+os.path.join = os.path.join
 rnd = random.randint
 
 

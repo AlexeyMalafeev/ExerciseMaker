@@ -1,8 +1,11 @@
+import os
+
+
 # todo
 CWD = os.getcwd()
-INPUT_DIR = jp(CWD, 'input')
-OUTPUT_DIR = jp(CWD, 'output')
-LANG_DIR = jp(CWD, 'lang')
+INPUT_DIR = os.path.join(CWD, 'input')
+OUTPUT_DIR = os.path.join(CWD, 'output')
+LANG_DIR = os.path.join(CWD, 'lang')
 
 ANSW_SECTION = '\n\nANSWERS:\n\n'
 GAP = '_____'
@@ -15,18 +18,15 @@ CLAUSE_SPLITTERS = ':,;'
 ALL_SPLITTERS = SEN_SPLITTERS + CLAUSE_SPLITTERS
 EOSEN_EXCEPTIONS = set('mr mrs rev lt'.split())
 
-DUBIOUS_MEASURES = 'acad_ratio intw_ratio uw_ratio mean_word_len'.split()
-COMPL_MEASURES = 'rare1_ratio rare2_ratio sen_ratio'.split()
-
 
 # load derivatives
-dr = jp(LANG_DIR, 'derivatives.txt')
+dr = os.path.join(LANG_DIR, 'derivatives.txt')
 temp_wf_list = [line.split() for line in open(dr)]
 DERIV_DICT = dict([(words[x], words[0]) for words in temp_wf_list for x in range(len(words)) if x != 0])
 
 
 # load verb forms (dict)
-dr = jp(LANG_DIR, 'vforms.txt')
+dr = os.path.join(LANG_DIR, 'vforms.txt')
 temp = [line.split() for line in open(dr)]
 VFORMS = {}
 for words in temp:
@@ -36,7 +36,7 @@ V1FORMS = set(VFORMS.values())
 
 
 # load simple verb forms (dict)
-dr = jp(LANG_DIR, 'vforms_simple.txt')
+dr = os.path.join(LANG_DIR, 'vforms_simple.txt')
 temp = [line.split() for line in open(dr)]
 SVFORMS = {}
 for words in temp:
@@ -46,12 +46,12 @@ SVFORMS.update(VFORMS)
 
 
 # load skip adverbs list
-dr = jp(LANG_DIR, 'skip_adverbs.txt')
+dr = os.path.join(LANG_DIR, 'skip_adverbs.txt')
 SKIP_ADVERBS = set(open(dr).read().split())
 
 
 # load error rules
-dr = jp(LANG_DIR, 'err_rules.txt')
+dr = os.path.join(LANG_DIR, 'err_rules.txt')
 ERR_DICT = {}
 for line in open(dr):
     if '->' in line:
@@ -80,17 +80,17 @@ OPEN_CLOZE_HARD = (ARTICLES | AUXILIARIES | CONJUNCTIONS | PREPOSITIONS | PRONOU
 ##open('oc words.txt', 'w').write(' '.join(sorted(OPEN_CLOZE_HARD)))
 
 # ordered open cloze words
-FCE_ORDER = open(jp(LANG_DIR, 'oc_order_fce.txt')).read().split()
+FCE_ORDER = open(os.path.join(LANG_DIR, 'oc_order_fce.txt')).read().split()
 FCE_SET = set(FCE_ORDER)
-CAE_ORDER = open(jp(LANG_DIR, 'oc_order_cae.txt')).read().split()
+CAE_ORDER = open(os.path.join(LANG_DIR, 'oc_order_cae.txt')).read().split()
 CAE_SET = set(CAE_ORDER)
-CPE_ORDER = open(jp(LANG_DIR, 'oc_order_cpe.txt')).read().split()
+CPE_ORDER = open(os.path.join(LANG_DIR, 'oc_order_cpe.txt')).read().split()
 CPE_SET = set(CPE_ORDER)
 
 # fragments
 FRAG_AFTER = set('say says said saying tell tells told telling think thinks thought thinking'.split())
 FRAG_FROM = set('''after although and anything anywhere as because but despite if regardless since so than that though till until what whatever when where whereas whether which while who whose why with yet'''.split())
 
-COMMON2000 = set(open(jp(LANG_DIR, 'common_2000+.txt')).read().split())
-COMMON10000 = set(open(jp(LANG_DIR, 'common_10000+.txt')).read().split())
-ACADEMIC = set(open(jp(LANG_DIR, 'academic.txt')).read().split())
+COMMON2000 = set(open(os.path.join(LANG_DIR, 'common_2000+.txt')).read().split())
+COMMON10000 = set(open(os.path.join(LANG_DIR, 'common_10000+.txt')).read().split())
+ACADEMIC = set(open(os.path.join(LANG_DIR, 'academic.txt')).read().split())

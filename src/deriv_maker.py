@@ -1,3 +1,6 @@
+from gap_maker import GapMaker
+
+
 class DerivMaker(GapMaker):
     deriv_dict = DERIV_DICT
     gap_distance = 2

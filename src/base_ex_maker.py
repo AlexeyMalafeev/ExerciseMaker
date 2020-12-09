@@ -1,3 +1,6 @@
+from complexity import get_ratio
+
+
 class BaseExMaker(object):
     def __init__(self, text_obj):
         self.text_obj = text_obj
@@ -49,9 +52,9 @@ self.instr and self.tag should also be defined within the subclass."""
         instr = self.instr
         tdir = self.text_obj.target_dir
         self.ex_text_string = '{}\n\n{}'.format(instr, self.ex_text_string)
-        with open(jp(tdir, '{} {}.txt'.format(fn, tag)), 'w') as f:
+        with open(os.path.join(tdir, '{} {}.txt'.format(fn, tag)), 'w') as f:
             f.write(self.ex_text_string)
-        with open(jp(tdir, '{} {} [key].txt'.format(fn, tag)), 'w') as f:
+        with open(os.path.join(tdir, '{} {} [key].txt'.format(fn, tag)), 'w') as f:
             f.write(self.ex_text_string + ANSW_SECTION + self.ans_key_string)
 
     def set_instr(self):

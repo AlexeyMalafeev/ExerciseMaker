@@ -1,3 +1,12 @@
+import os
+
+from constants import OUTPUT_DIR
+
+
+DUBIOUS_MEASURES = 'acad_ratio intw_ratio uw_ratio mean_word_len'.split()
+COMPL_MEASURES = 'rare1_ratio rare2_ratio sen_ratio'.split()
+
+
 def get_ratio(val_a, val_b):
     return round(val_a / val_b, 3)
 
@@ -15,7 +24,7 @@ def rank(rdicts_dict):
             ranking[k] += t_ranks[d[k][m_ref]]
     r_order = sorted(ranking, key=ranking.get)
     mlen = max((len(k) for k in ranking)) + len(str(len(ranking))) + 2
-    file_dir = jp(OUTPUT_DIR, '![compl ranking].txt')
+    file_dir = os.path.join(OUTPUT_DIR, '![compl ranking].txt')
     with open(file_dir, 'w') as f:
         for i, k in enumerate(r_order):
             f.write('{:<{}}  {}\n\n'.format('{}. {}'.format(i + 1, k), mlen, ranking[k]))
@@ -28,7 +37,7 @@ def register_measures(text_obj, rdict):
 
 
 def save_all_stats(all_stats):
-    file_dir = jp(OUTPUT_DIR, '[all ratios].txt')
+    file_dir = os.path.join(OUTPUT_DIR, '[all ratios].txt')
     d = all_stats
     keys = sorted(d)
     subkeys = sorted(d[keys[0]])
@@ -42,7 +51,7 @@ def save_all_stats(all_stats):
 
 
 def save_one_stat(rdicts_dict, key):
-    file_dir = jp(OUTPUT_DIR, '{}.txt'.format(key))
+    file_dir = os.path.join(OUTPUT_DIR, '{}.txt'.format(key))
     d = {k: v[key] for k, v in rdicts_dict.items()}
     mlen = max((len(k) for k in d))
     keys = sorted(d, key=d.get)
@@ -53,7 +62,7 @@ def save_one_stat(rdicts_dict, key):
 
 def save_text_stats(text_stats):
     keys = sorted(text_stats)
-    file_dir = jp(OUTPUT_DIR, text_stats['_title_'], '[stats].txt')
+    file_dir = os.path.join(OUTPUT_DIR, text_stats['_title_'], '[stats].txt')
     with open(file_dir, 'w') as f:
         for k in keys:
             f.write('{:<17}{}\n'.format(k, text_stats[k]))

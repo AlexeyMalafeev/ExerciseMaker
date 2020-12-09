@@ -63,7 +63,7 @@ class TextObject(object):
 
     def make_dir(self, target_dir):
         if not target_dir:
-            target_dir = jp(OUTPUT_DIR, self.file_name)
+            target_dir = os.path.join(OUTPUT_DIR, self.file_name)
         self.target_dir = target_dir
         ensure_dir(self.target_dir)
 
@@ -102,17 +102,17 @@ class TextObject(object):
         tdir = self.target_dir
 
         # copy
-        with open(jp(tdir, '{}.txt'.format(fn)), 'w') as f:
+        with open(os.path.join(tdir, '{}.txt'.format(fn)), 'w') as f:
             f.write('\n\n'.join(self.paragraphs))
 
         # sentences
-        with open(jp(tdir, '[sent].txt'), 'w') as f:
+        with open(os.path.join(tdir, '[sent].txt'), 'w') as f:
             sens = [' '.join((w for w in s)) for s in self.sentences]
             sens_st = ('\n'.join(('{}. {}'.format(i + 1, s) for i, s in enumerate(sens))))
             f.write(sens_st)
 
         # rare words
-        open(jp(tdir, '[rare1].txt'), 'w').write(' '.join(sorted(self.rare1)))
-        open(jp(tdir, '[rare2].txt'), 'w').write(' '.join(sorted(self.rare2)))
+        open(os.path.join(tdir, '[rare1].txt'), 'w').write(' '.join(sorted(self.rare1)))
+        open(os.path.join(tdir, '[rare2].txt'), 'w').write(' '.join(sorted(self.rare2)))
         # acad.words
-        open(jp(tdir, '[acad].txt'), 'w').write(' '.join(sorted(self.academic)))
+        open(os.path.join(tdir, '[acad].txt'), 'w').write(' '.join(sorted(self.academic)))

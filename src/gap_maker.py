@@ -1,3 +1,6 @@
+from base_ex_maker import BaseExMaker
+
+
 class GapMaker(BaseExMaker):
     """General GapMaker class. Not to be instantiated directly.
 Needs: instr, tag, check_condition(i, w), make_gap(i, count)."""
