@@ -46,7 +46,7 @@ class TextObject(object):
 
             if i != end:
                 nw = self.words_no_punc[i + 1]
-                cond2 = ((nw and nw[0].isupper()) or self.words[i] == NEW_LINE_MARKER_S)  # i+1?
+                cond2 = (nw and nw[0].isupper()) or self.words[i] == NEW_LINE_MARKER_S  # i+1?
             else:
                 cond2 = False
 
@@ -66,7 +66,6 @@ class TextObject(object):
             target_dir = os.path.join(OUTPUT_DIR, self.file_name)
         self.target_dir = target_dir
         ensure_dir(self.target_dir)
-
 
     def measure_compl(self):
         word_lengths = [len(w) for w in self.words_set]
@@ -108,7 +107,7 @@ class TextObject(object):
         # sentences
         with open(os.path.join(tdir, '[sent].txt'), 'w') as f:
             sens = [' '.join((w for w in s)) for s in self.sentences]
-            sens_st = ('\n'.join(('{}. {}'.format(i + 1, s) for i, s in enumerate(sens))))
+            sens_st = '\n'.join(('{}. {}'.format(i + 1, s) for i, s in enumerate(sens)))
             f.write(sens_st)
 
         # rare words

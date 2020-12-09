@@ -1,26 +1,24 @@
 def get_punc(word):
     """
-Return (left_punc_string, right_punc_string):
-    "Cat -> ('"', '')
-    cat, -> ('', ',')
-    'cat' -> ("'", "'")
-    cat's -> ('', "'s")
-    cat-powered -> ('', '-powered')
-        etc.
-"""
+    Return (left_punc_string, right_punc_string):
+        "Cat -> ('"', '')
+        cat, -> ('', ',')
+        'cat' -> ("'", "'")
+        cat's -> ('', "'s")
+        cat-powered -> ('', '-powered')
+            etc."""
     return get_word_and_punc(word)[1:]
 
 
 def get_word_and_punc(word):
     """
-Return (word_without_punc, left_punc_string, right_punc_string):
-"Cat -> ('Cat', '"', '')
-cat, -> ('cat', '', ',')
-'cat' -> ('cat', "'", "'")
-cat's -> ('cat's', '', "")
-"cat-powered" -> ('cat-powered', '"', '"')
-    etc.
-"""
+    Return (word_without_punc, left_punc_string, right_punc_string):
+    "Cat -> ('Cat', '"', '')
+    cat, -> ('cat', '', ',')
+    'cat' -> ('cat', "'", "'")
+    cat's -> ('cat's', '', "")
+    "cat-powered" -> ('cat-powered', '"', '"')
+        etc."""
     if word.isalnum():  # check for the most frequent input
         return word, '', ''
     lpunc = ''
@@ -47,8 +45,7 @@ cat's -> ('cat's', '', "")
 
 def has_digit(chars):
     """
-Return True if any of the chars is numeric.
-"""
+    Return True if any of the chars is numeric."""
     return any((c.isdigit() for c in chars))
 
 
@@ -57,7 +54,7 @@ def make_paragraphs(words, par_ind):
     for i in par_ind:
         words[i] += PARAGRAPH_MARKER
     text = ' '.join([w for w in words if w])
-    return text.replace(PARAGRAPH_MARKER+' ', '\n\n')
+    return text.replace(PARAGRAPH_MARKER + ' ', '\n\n')
 
 
 def remove_punc(word):
@@ -85,7 +82,7 @@ def smart_cap(word):
     for i, c in enumerate(word):
         if c.isalpha():
             w += c.capitalize()
-            w += word[i + 1:]
+            w += word[i + 1 :]
             break
         elif c.isdigit():  # do not capitalize words starting with digits, like 14-year-old
             return word

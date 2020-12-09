@@ -4,10 +4,13 @@ class SimpleVFormsMaker(GapMaker):
 
     def check_condition(self, i, w):
         orig_w = self.orig_no_punc[i]
-        not_after_to = i == 0 or self.text[i-1] != 'to'
+        not_after_to = i == 0 or self.text[i - 1] != 'to'
         is_v1 = w in V1FORMS
-        return (w in self.vforms and not orig_w[0].isupper()  # avoid clashes with names
-                and (not is_v1 or not_after_to))  # avoid to + V1, too obvious
+        return (
+            w in self.vforms
+            and not orig_w[0].isupper()  # avoid clashes with names
+            and (not is_v1 or not_after_to)
+        )  # avoid to + V1, too obvious
 
     def make_gap(self, i, count):
         w = self.text[i]
@@ -22,11 +25,16 @@ class SimpleVFormsMaker(GapMaker):
     def set_tag(self):
         self.tag = '[verbs {}{}]'.format(self.submode, get_gap_info(self.max_num_gaps))
 
+
 class AdvVFormsMaker(SimpleVFormsMaker):
     vforms = VFORMS
     skip_adverbs = SKIP_ADVERBS
-    aux_pos = set('am is are was were be been being have has had having will would do does did'.split())
-    aux_neg = set("not isn't aren't wasn't weren't don't doesn't didn't won't wouldn't haven't hasn't hadn't".split())
+    aux_pos = set(
+        'am is are was were be been being have has had having will would do does did'.split()
+    )
+    aux_neg = set(
+        "not isn't aren't wasn't weren't don't doesn't didn't won't wouldn't haven't hasn't hadn't".split()
+    )
     submode = 'h'
 
     def make_gap(self, i, count):

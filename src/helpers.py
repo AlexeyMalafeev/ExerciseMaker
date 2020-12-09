@@ -9,9 +9,9 @@ def ensure_dir(directory):
 
 def get_gap_info(num_gaps):
     """Return string:
-        0           -> ''
-        0.9 (< 1)   -> '90%'
-        15 (> 1)    -> '15'"""
+    0           -> ''
+    0.9 (< 1)   -> '90%'
+    15 (> 1)    -> '15'"""
     if num_gaps == 0:
         return ''
     elif num_gaps <= 1:
@@ -22,10 +22,9 @@ def get_gap_info(num_gaps):
 
 def ind_from_dict(ind_dict, n, prox=2):
     """
-Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
-with minimum difference (prox) between all indices.
-Shortest lists of indices have a priority.
-"""
+    Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
+    with minimum difference (prox) between all indices.
+    Shortest lists of indices have a priority."""
     ind = [ig[:] for ig in ind_dict.values()]
     ind.sort(key=len, reverse=True)
     new = []
@@ -44,10 +43,9 @@ Shortest lists of indices have a priority.
 
 def ind_from_dict_ordered(ind_dict, order, n, prox=2):
     """
-Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
-with minimum difference (prox) between all indices.
-Ordered (order = [word1, word2, ...]): words have a priority over _preceding_ words.
-"""
+    Randomly choose a number (n) of indices from dict (ind_dict) of lists of indices
+    with minimum difference (prox) between all indices.
+    Ordered (order = [word1, word2, ...]): words have a priority over _preceding_ words."""
     ind = []
     for w in order:
         if w in ind_dict:
@@ -68,9 +66,8 @@ Ordered (order = [word1, word2, ...]): words have a priority over _preceding_ wo
 
 def ind_from_list(ind_list, n, prox=2):
     """
-Randomly choose a number (n) of indices from list (ind_list)
-with minimum difference (prox) between all indexes.
-"""
+    Randomly choose a number (n) of indices from list (ind_list)
+    with minimum difference (prox) between all indexes."""
     ind = set(ind_list)
     new = []
     while len(new) < n and ind != set():
@@ -99,6 +96,7 @@ def num_to_letter(n):
     100 -> w3
     1000000 -> o38461"""
     import string
+
     letters = string.ascii_lowercase
     a, b = divmod(n, 26)
     return '{}{}'.format(letters[b], a if a > 0 else '')

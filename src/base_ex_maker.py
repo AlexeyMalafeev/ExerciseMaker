@@ -19,7 +19,6 @@ class BaseExMaker(object):
 
         self.first_pass()
 
-
     def first_pass(self):
         input('first_pass for {} is not implemented'.format(self.__class__.__name__))
 
@@ -43,8 +42,8 @@ class BaseExMaker(object):
 
     def save(self):
         """
-Save self.ex_text_string and self.ans_key_string to a text file;
-self.instr and self.tag should also be defined within the subclass."""
+        Save self.ex_text_string and self.ans_key_string to a text file;
+        self.instr and self.tag should also be defined within the subclass."""
         self.ex_text_string = self.ex_text_string.replace(NEW_LINE_MARKER, '\n\n')
         self.ans_key_string = self.ans_key_string.replace(NEW_LINE_MARKER, '\n\n')
         fn = self.text_obj.file_name

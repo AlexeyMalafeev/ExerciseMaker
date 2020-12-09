@@ -16,10 +16,10 @@ class FragmentMaker(GapMaker):
 
     def check_condition(self, i, w):
         curr_sen_ind = self.sen_mask[i]
-        prev_w = self.text[i-1] if i != 0 else ''
-        prev_rpunc = self.punc[i-1][1] if i != 0 else ''
+        prev_w = self.text[i - 1] if i != 0 else ''
+        prev_rpunc = self.punc[i - 1][1] if i != 0 else ''
         rpunc = self.punc[i][1]
-        prev_sen_ind = self.sen_mask[i-1] if i != 0 else -1
+        prev_sen_ind = self.sen_mask[i - 1] if i != 0 else -1
         if curr_sen_ind == self.mark_sen:
             # if we have marked some words in this sentence already
             if curr_sen_ind == self.skip_sen:
@@ -32,7 +32,9 @@ class FragmentMaker(GapMaker):
             else:
                 # if we have marked at least one word and want to continue marking (no end of clause)
                 return True
-        elif (w in self.frag_from or prev_w in self.frag_after or (prev_rpunc and prev_rpunc in ',;:')) and prev_sen_ind == curr_sen_ind:
+        elif (
+            w in self.frag_from or prev_w in self.frag_after or (prev_rpunc and prev_rpunc in ',;:')
+        ) and prev_sen_ind == curr_sen_ind:
             # if we can start marking words in a new sentence
             self.mark_sen = curr_sen_ind
             return True
@@ -44,7 +46,9 @@ class FragmentMaker(GapMaker):
         random.shuffle(order)
         for j, n in enumerate(order):
             frag = ' '.join([self.orig_with_punc[i] for i in self.indices[n]])
-            frag = remove_punc(frag)  # this removes the punctuation at the beginning and at the end of the fragment
+            frag = remove_punc(
+                frag
+            )  # this removes the punctuation at the beginning and at the end of the fragment
             frag = frag[0].lower() + frag[1:]  # hide the capitalization of the first letter
             new_frag = '{}) '.format(num_to_letter(j)) + frag
             fragments.append(new_frag)
@@ -56,8 +60,9 @@ class FragmentMaker(GapMaker):
         gap_starts = gap_indices[0]
         gap_ends = gap_indices[-1]
         if i == gap_starts:
-            self.ex_text[i] = '({}) {}{}{}{}'.format(self.count, GAP, GAP, self.punc[gap_starts][0],
-                                                     self.punc[gap_ends][1])
+            self.ex_text[i] = '({}) {}{}{}{}'.format(
+                self.count, GAP, GAP, self.punc[gap_starts][0], self.punc[gap_ends][1]
+            )
             self.ans_key[i] = '({}) {}'.format(self.count, self.orig_with_punc[i])
             self.count += 1
         # elif i == gap_ends:
@@ -86,7 +91,7 @@ class FragmentMaker(GapMaker):
         if len(sample_dict) > self.max_num_gaps:  # check if there are not too many fragments
             random.shuffle(keep_keys)
             # remove some fragments if too many
-            keep_keys, extra = keep_keys[:self.max_num_gaps], keep_keys[self.max_num_gaps:]
+            keep_keys, extra = keep_keys[: self.max_num_gaps], keep_keys[self.max_num_gaps :]
             del_keys.extend(extra)
         for k in del_keys:
             del self.indices[k]  # still need to delete these for correct finalization

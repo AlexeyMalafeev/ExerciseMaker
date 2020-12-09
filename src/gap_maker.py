@@ -3,7 +3,8 @@ from base_ex_maker import BaseExMaker
 
 class GapMaker(BaseExMaker):
     """General GapMaker class. Not to be instantiated directly.
-Needs: instr, tag, check_condition(i, w), make_gap(i, count)."""
+    Needs: instr, tag, check_condition(i, w), make_gap(i, count)."""
+
     ans_key_is_text = False
     max_num_gaps = 0
     gap_distance = 3
